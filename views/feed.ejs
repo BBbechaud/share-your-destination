@@ -1,0 +1,19 @@
+<%- include('partials/header') -%>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+      <ul class="row list-unstyled">
+        <% for(var i=0; i<destination.length; i++) {%>
+        <li class="col-6 justify-content-between mt-5">
+            <h2><%= destination[i].location %></h2>
+            <a href="/destination/<%= destination[i]._id%>">
+                <img class="img-fluid" src="<%= destination[i].image%>">
+            </a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+    <div class="col-6 mt-5">
+      <a class="btn btn-primary btn-position" href="/profile">Return to Profile</a>
+    </div>
+</div>
+<%- include('partials/footer') -%>

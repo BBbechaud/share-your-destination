@@ -1,0 +1,55 @@
+<%- include('partials/header') -%>
+<div class="container">
+  <div class="row mt-5">
+      <div class="col-6">
+          <div>
+              <p><strong>User Name</strong>: <%= user.userName %></p>
+              <p><strong>Email</strong>: <%= user.email %></p>
+              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+          </div>
+          <div class="mt-5">
+            <h2>Add a Destination</h2>
+            <form action="/destination/createDestination" enctype="multipart/form-data" method="POST">
+              <div class="mb-3">
+                  <label for="location" class="form-label">Location</label>
+                  <input type="text" class="form-control" id="location" name="location">
+              </div>
+              <div class="mb-3">
+                <label for="localLanguage" class="form-label">Local Language</label>
+                <textarea class="form-control" id="localLanguage" name="localLanguage"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="localCurrency" class="form-label">Local Currency</label>
+                <textarea class="form-control" id="localCurrency" name="localCurrency"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="reason" class="form-label">Why do you want to visit there?</label>
+                <textarea class="form-control" id="reason" name="reason"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="imgUpload" class="form-label">Image</label>
+                <input type="file" class="form-control" id="imageUpload" name="file">
+              </div>
+              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+            </form>
+          </div>
+      </div>
+      <div class="col-6">
+        <ul class="row list-unstyled">
+        <% for(var i=0; i<destination.length; i++) {%>
+          <li class="col-6 justify-content-between mt-5">
+            <a href="/destination/<%= destination[i]._id%>">
+              <h2><%= destination[i].location%></h2>
+              <img class="img-fluid" src="<%= destination[i].image%>">
+            </a>
+          </li>
+        <% } %>
+        </ul>
+        <div class="row justify-content-center mt-5">
+          <a class="btn btn-primary" href="/feed">Return to Feed</a>
+        </div>  
+      </div>  
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') -%>
