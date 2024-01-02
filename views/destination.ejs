@@ -1,45 +1,40 @@
 <%- include('partials/header') -%>
-<div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="col-6">
-      <h2><%= destination.location %></h2>
-      <img class="img-fluid no-hover" src="<%= destination.image%>" />
-      <div class="row justify-content-between">
-         <form
-          class="col-1"
-          action="/destination/favoriteDestination/<%= destination.id %>?_method=PUT"
-          method="POST"
-        >
-          <button class="btn btn-primary fa fa-star" type="submit"></button>
-        </form> 
-         <h3 class="col-3"> <%= destination.favorite %></h3>
-        <%if(destination.user == user.id){ %>
-        <form
-          action="/destination/deleteDestination/<%= destination.id %>?_method=DELETE"
-          method="POST"
-          class="col-3"
-        > 
-          <button class="btn btn-primary fa fa-trash" type="submit"></button>
-        </form>
-        <%}%> 
+<div class="grid-container">
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-6">
+        <h2><%= destination.location %></h2>
+        <img class="img-fluid no-hover" src="<%= destination.image%>" />
+        <div class="row justify-content-between">
+            <span>Post by: <%=user.userName%> </span>
+          <h3 class="col-3"> <%= destination.favorite %></h3>
+          <%if(destination.user == user.id){ %>
+          <form
+            action="/destination/deleteDestination/<%= destination.id %>?_method=DELETE"
+            method="POST"
+            class="col-3"
+          > 
+            <button class="btn btn-primary fa fa-trash trash-align" type="submit"></button>
+          </form>
+          <%}%> 
+        </div>
       </div>
     </div>
-    <div class="col-3 mt-5">
-      <p><%= destination.localLanguage %></p>
-    </div>
-    <div class="col-3 mt-5">
-      <p><%= destination.localCurrency %></p>
-    </div>
-    <div class="col-3 mt-5">
-      <p><%= destination.reason %></p>
-    </div>
-    
-
-    <div class="col-6 mt-5">
+    <div class="center-btns">
       <a class="btn btn-primary" href="/profile">Return to Profile</a>
       <a class="btn btn-primary" href="/feed">Return to Feed</a>
     </div>
   </div>
-</div>
-
+  <div class="description-container">
+        <div class=" mt-5">
+          <p>Local Language: <%= destination.localLanguage %></p>
+        </div>
+        <div class=" mt-5">
+          <p>Local Currency: <%= destination.localCurrency %></p>
+        </div>
+        <div class="col-12 mt-5">
+          <p>Why I want to visit there: <%= destination.reason %></p>
+        </div>
+      </div>
+  </div>
 <%- include('partials/footer') -%>

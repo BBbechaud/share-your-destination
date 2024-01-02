@@ -1,3 +1,6 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
 .btn-position {
     margin-bottom: 30px;
     position: absolute ;
@@ -32,4 +35,26 @@ body{
 }
 header{
     padding-top: 40px;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+.description-container{
+    margin-top: 70px;
+    position: relative;
+    right: 60%;
+}
+.center-btns{
+    position: relative;
+    left: 37%
+}
+.trash-align {
+    position: relative;
+    bottom: 16px;
+    left: 64px;
+}
+p {
+    font-size: 20px;
+ 
 }
