@@ -8,7 +8,7 @@
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
           </div>
           <div class="mt-5">
-            <h2>Add a Destination</h2>
+            <h2>Add a new destination</h2>
             <form action="/destination/createDestination" enctype="multipart/form-data" method="POST">
               <div class="mb-3">
                   <label for="location" class="form-label">Location</label>
@@ -16,25 +16,26 @@
               </div>
               <div class="mb-3">
                 <label for="localLanguage" class="form-label">Local Language</label>
-                <textarea class="form-control" id="localLanguage" name="localLanguage"></textarea>
+                <textarea class="form-control" id="localLanguage" name="localLanguage" rows="1"></textarea>
               </div>
               <div class="mb-3">
                 <label for="localCurrency" class="form-label">Local Currency</label>
-                <textarea class="form-control" id="localCurrency" name="localCurrency"></textarea>
+                <textarea class="form-control" id="localCurrency" name="localCurrency" rows="1"></textarea>
               </div>
               <div class="mb-3">
                 <label for="reason" class="form-label">Why do you want to visit there?</label>
-                <textarea class="form-control" id="reason" name="reason"></textarea>
+                <textarea class="form-control" id="reason" name="reason" rows="4"></textarea>
               </div>
               <div class="mb-3">
                 <label for="imgUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
+                <input type="file" class="form-control" id="imageUpload" name="file" required>
               </div>
-              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+              <button type="submit" class="btn btn-primary btn-margin" value="Upload">Submit</button>
             </form>
           </div>
       </div>
       <div class="col-6">
+        <h2>My Destinations</h2>
         <ul class="row list-unstyled">
         <% for(var i=0; i<destination.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
