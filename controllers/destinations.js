@@ -7,10 +7,9 @@ module.exports = {
     console.log(req.user)
     try {
       //Since we have a session each request (req) contains the logged-in users info: req.user
-      //console.log(req.user) to see everything
-      //Grabbing just the posts of the logged-in user
+      //Grabbing just the destinations of the logged-in user
       const destination = await Destination.find({ user: req.user.id }).sort({ createdAt: "desc" });
-      //Sending post data from mongodb and user data to ejs template
+      //Sending destination data from mongodb and user data to ejs template
       res.render("profile.ejs", { destination: destination, user: req.user });
     } catch (err) {
       console.log(err);
@@ -18,14 +17,11 @@ module.exports = {
   },
   getDestination: async (req, res) => {
     try {
-      //id parameter comes from the post routes
-      //router.get("/:id", ensureAuth, postsController.getPost);
-      //http://localhost:2121/post/631a7f59a3e56acfc7da286f
-      //id === 631a7f59a3e56acfc7da286f
+      //id parameter comes from the destination routes
+      //router.get("/:id", ensureAuth, destinationsController.getDestination);
+
       const destination = await Destination.findById(req.params.id);
-      const postedBy = await User.findById(req.params.id).populate('userName')
-      console.log(postedBy)
-      res.render("destination.ejs", { destination: destination, user: req.user, postedBy: postedBy});
+      res.render("destination.ejs", { destination: destination, user: req.user});
     } catch (err) {
       console.log(err);
     } 
@@ -54,6 +50,7 @@ module.exports = {
         localLanguage: req.body.localLanguage,
         localCurrency: req.body.localCurrency,
         reason: req.body.reason,
+        likes: 0,
         user: req.user.id,
       });
       console.log("Destination has been added!");
@@ -62,7 +59,7 @@ module.exports = {
       console.log(err);
     }
   },
-  favoritePost: async (req, res) => {
+  likeDestination: async (req, res) => {
     try {
       await Destination.findOneAndUpdate(
         { _id: req.params.id },
@@ -71,18 +68,18 @@ module.exports = {
         }
       );
       console.log("Likes +1");
-      res.redirect(`/post/${req.params.id}`);
+      res.redirect(`/destination/${req.params.id}`);
     } catch (err) {
       console.log(err);
     }
   },
   deleteDestination: async (req, res) => {
     try {
-      // Find post by id
+      // Find destination by id
       let destination = await Destination.findById({ _id: req.params.id });
       // Delete image from cloudinary
       await cloudinary.uploader.destroy(destination.cloudinaryId);
-      // Delete post from db
+      // Delete destination from db
       await Destination.remove({ _id: req.params.id });
       console.log("Deleted Destination");
       res.redirect("/profile");

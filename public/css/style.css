@@ -57,7 +57,7 @@ header{
 }
 .trash-align {
     position: relative;
-    bottom: 16px;
+    top: 12px;
     left: 64px;
 }
 p {
@@ -66,4 +66,13 @@ p {
 }
 .form-text {
     color: rgb(18,15,20);
+}
+.fa-heart {
+    position: relative;
+    top: 10px;
+}
+.likes {
+    position: relative;
+    left: 30px;
+    top: 8px;
 }
