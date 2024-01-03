@@ -1,5 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Destination = require("../models/Destination");
+const User = require("../models/User");
 
 module.exports = {
   getProfile: async (req, res) => { 
@@ -22,10 +23,12 @@ module.exports = {
       //http://localhost:2121/post/631a7f59a3e56acfc7da286f
       //id === 631a7f59a3e56acfc7da286f
       const destination = await Destination.findById(req.params.id);
-      res.render("destination.ejs", { destination: destination, user: req.user});
+      const postedBy = await User.findById(req.params.id).populate('userName')
+      console.log(postedBy)
+      res.render("destination.ejs", { destination: destination, user: req.user, postedBy: postedBy});
     } catch (err) {
       console.log(err);
-    }
+    } 
   },
   getFeed: async (req, res) => {
     try {

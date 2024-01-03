@@ -6,8 +6,8 @@
         <h2><%= destination.location %></h2>
         <img class="img-fluid no-hover" src="<%= destination.image%>" />
         <div class="row justify-content-between">
-            <span>Post by: <%=user.userName%> </span>
-          <h3 class="col-3"> <%= destination.favorite %></h3>
+            <span>Post by: <%=destination.postedBy%> </span>
+          <div class="col-3"></div>
           <%if(destination.user == user.id){ %>
           <form
             action="/destination/deleteDestination/<%= destination.id %>?_method=DELETE"

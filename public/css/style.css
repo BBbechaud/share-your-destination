@@ -30,6 +30,12 @@ img:hover:not(.no-hover){
     border: 2px solid 
     #0d6efd;
 }
+.img-container{
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    
+}
 body{
     background-color: rgb(143, 150, 156);
 }
@@ -57,4 +63,7 @@ header{
 p {
     font-size: 20px;
  
+}
+.form-text {
+    color: rgb(18,15,20);
 }
