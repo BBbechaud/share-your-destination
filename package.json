@@ -1,7 +1,7 @@
 {
-  "name": "fullstack-template",
+  "name": "share-your-destination",
   "version": "1.0.0",
-  "description": "Starter template for future projects",
+  "description": "destination sharing app",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
